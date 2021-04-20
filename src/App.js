@@ -1,23 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Form from './Form';
 import { v4 as uuid } from 'uuid';
 
-export const intialTeamMembers = [
+const teamList = [
     {
         id: uuid(),
-        username: 'Jim Halpert',
+        name: 'Jim Halpert',
         email: 'jhalpert@dundermifflinpaper.com',
-        role: 'sales'
+        role: 'Sales'
     }
 ];
 
-function App() {
+const initialFormValues = {
+  id: uuid(),
+  name: '',
+  email: '',
+  role: ''
+}
+
+const change = e =>
+
+export default function App() {
+  const [teamMembers, setTeamMembers] = useState(teamList);
+  const [formValues, setFormValues] = useState(initialFormValues);
+
   return (
     <div>
-      <p>hi</p>
-      <Form />
+      <Form team = {teamMembers} values = {formValues} change = {change}/>
     </div>
   );
 }
-
-export default App;
